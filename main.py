@@ -76,7 +76,7 @@ def push_this_date(d, pixel):
     os.system("git add .")
     os.environ['GIT_COMMITTER_DATE'] = sdate
     os.environ['GIT_AUTHOR_DATE'] = sdate
-    os.system("git commit -m \""+sdate+"\"")
+    os.system("git commit -m \""+sdate+" by https://github.com/ARKANYOTA/DrawOnGithubActivity\"")
 
 
 def main(argv=None):
