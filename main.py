@@ -27,8 +27,12 @@ def get_image_data():
     im = Image.open(argv.image)
     image_sequence = im.getdata()
     image_array = np.array(image_sequence)
-    arr = [" " if px[1] > 120 else "1" for px in image_array]
-    print(arr)
+    print(image_array)
+    print(len(image_array))
+    try:
+        arr = [" " if px[1] > 120 else "1" for px in image_array]
+    except IndexError:
+        arr = [" " if px >= 0.5  else "1" for px in image_array]
     for ind, i in enumerate(arr):
         if ind % 52 == 0:
             print()
