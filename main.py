@@ -69,7 +69,7 @@ def start_draw(new_arr):
 
 def push_this_date(d, pixel):
     print(d, pixel)
-    sdate = str(d) + " 05:05:05"
+    sdate = str(d) + " 12:05:05"
     os.chdir(argv.path)
     with open(str(d), "w") as f:
         f.write(sdate)
@@ -77,13 +77,14 @@ def push_this_date(d, pixel):
     os.environ['GIT_COMMITTER_DATE'] = sdate
     os.environ['GIT_AUTHOR_DATE'] = sdate
     os.system("git commit -m \""+sdate+"\"")
-    os.system("git push")
 
 
 def main(argv=None):
     get_first_day()
     new_arr = get_image_data()
     start_draw(new_arr)
+
+    print("Do a \"git push\"")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
