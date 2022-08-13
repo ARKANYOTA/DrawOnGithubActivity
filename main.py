@@ -86,15 +86,18 @@ def push_this_date(d, pixel):
 def main(argv=None):
     get_first_day()
     new_arr = get_image_data()
-    start_draw(new_arr)
+    if not argv.commit:
+        print("Start Draw")
+        start_draw(new_arr)
 
-    print("Do a \"git push\"")
+    print(f"Do: \n - \"cd {argv.path}\" \n - \"git push\"")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", help="Année à laquel, et renvoie la taille requise à l'image")
     parser.add_argument("--image", help="Image à draw")
     parser.add_argument("--path", help="Github project path")
+    parser.add_argument("--commit", nargs='?', const=True, type=bool, help="Si on ne veut pas push")
     argv = parser.parse_args()
     main(argv)
 
