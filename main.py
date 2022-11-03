@@ -74,7 +74,8 @@ def start_draw(new_arr):
 def push_this_date(d, pixel):
     print(d, pixel)
     sdate = str(d) + " 12:05:05"
-    os.chdir(argv.path)
+    if os.getcwd().split("/")[-1] != argv.path.split("/")[-1]:
+        os.chdir(argv.path)
     with open(str(d), "w") as f:
         f.write(sdate)
     os.system("git add .")
